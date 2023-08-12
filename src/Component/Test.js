@@ -1,24 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Test = props => {
     const [myName, setMyName] = useState("");
-    const [myInfo, setMyInfo] = useState({ });
+    const [myInfo, setMyInfo] = useState({
+        a: "hello",
+        b: "Bangladesh"
+    });
 
     const changeState = () => {
         setMyName("Rasin");
-
         setMyInfo({
-            age: "age 25",
-            address: " address: jashore, dhaka"
-        })
+            ...myInfo,
+            a: "I love"
+        });
     }
+
+    useEffect(() => {
+        console.log(myInfo);
+    }, [myName, myInfo]);
 
     return (
         <div>
-            <button onClick={changeState}>show</button>
-            <h2>{myName}</h2>
-            <h3>{myInfo.age}</h3>
-            <h4>{myInfo.address}</h4>
+            <button onClick={changeState}>change</button>
+
         </div>
     )
 
